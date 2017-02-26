@@ -38,14 +38,14 @@ class OSMParser:
 				if 'k' in i.attrib:
 					if(i.attrib['k']=='building'):
 						list_of_buildings.append(child[0].attrib['ref'])
-						#print(child[0].attrib['ref'])
+						print(child[0].attrib['ref'])
 		for child in root:
 			if "id" in child.attrib:
 				for i in list_of_buildings:
 					if child.attrib["id"]==str(i):
-						out_data.add_point((child.attrib['lon'],child.attrib['lat'],1.0))
+						print(child.attrib["lat"],child.attrib["lon"])
 				
-		return out_data
+		return None
 
 
 
