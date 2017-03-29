@@ -1,0 +1,11 @@
+import xml.etree.ElementTree as etree
+from py_osm_package.tag_parse import *
+
+
+class Relation:
+	def __init__(self,osm_tree_child):
+		print("relation wat")
+		self.id = osm_tree_child.attrib["id"] # id unique in relations
+		self.lat = osm_tree_child.attrib["lat"] #latitude
+		self.lat = osm_tree_child.attrib["lon"] #longitude
+		self.tags = parse_tags(osm_tree_child) # dictionary of tags, where k= key, v = value

@@ -1,0 +1,3 @@
+shapely $pip install shapely //for geometry
+	depends on GEOS $sudo apt-get install libdev-geos
+etree.ElementTree //for parsing xml or osm files

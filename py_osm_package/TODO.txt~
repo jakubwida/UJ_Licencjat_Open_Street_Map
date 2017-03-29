@@ -1,0 +1,21 @@
+Analiza OSM
+	1: obiekt Entity zawierajacy:
+		id - string, wyciagniety z items, uzywany w slownikowaniu obiektu
+		type - node/relation/way
+		items - zawierajacy nazw i slownik podtagow:
+			<nd ref="12345678"> -nd to nazwa, ref to klucz 1234.. to wartosc
+		tags -slownik zawierajacy agi gdzie k = klucz, v = wartosc
+
+obiekt ma sie sam parsowac jak dostanie child (z root), patrz osm parser
+	2: obiekt Item dla Entity
+		name - nazwa (np "nd", "member", "etc")
+		value_dict - slownik (np klucz ="ref", vartosc = "12345678")
+	3: geometry_object: -obiekt zawierajacy geometr reprezentacje tego co przedstawia Entity 
+		- name , String ozn typ - None, Line, Point, MultiPoly
+		-geo_object - wybrany typ obiektu geometrycznego
+		-funkcja plot, rysujaca go
+
+
+# chyba przy tym zostaniemy. klastrator będzie kalstrował po tym
+
+//wwżna rzecz któ©ą wypadałoby zrobić - rozbić entity na obiekty node/way/relation, i usunac obiekt Item, bo wyglada na to ze kazde z nich ma swoje wlasne rzeczy ktore obsuluguje item

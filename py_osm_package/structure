@@ -1,0 +1,17 @@
+GENERAL:
+
+Parser & Filter:
+>parse files to Node Way Relation w tags & shapely geo objects
+>filters them by geometry & tags
+>capable of returning lists of points
+
+Clustering
+>takes in shapely points (+parameter in function for significance) alone and in lists (for machine learning) 
+>returns same objects, but in lists/dictionaries, whatever for clustering
+
+Visualisation:
+>takes in all shapely objects and draws them
+>also responsible for txt printing of clusters
+
+//todo:
+1. geo objects for parser & filter

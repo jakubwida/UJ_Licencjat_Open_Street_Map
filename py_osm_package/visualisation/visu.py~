@@ -1,0 +1,16 @@
+import matplotlib.pyplot as plt
+
+def draw_sympy(figure,decoration_string):
+	if figure.geom_type=="Point":
+		lis=list(zip(*list(figure.coords)))
+		plt.plot(lis[0],lis[1],decoration_string)
+	elif figure.geom_type=="LineString":
+		lis=list(zip(*list(figure.coords)))
+		plt.plot(lis[0],lis[1],decoration_string)
+	elif figure.geom_type=="LinearRing":
+		lis=list(zip(*list(figure.coords)))
+		plt.plot(lis[0],lis[1],decoration_string)
+	elif figure.geom_type=="Polygon":
+		lis=list(zip(*list(figure.coords)))
+		plt.plot(lis[0],lis[1],decoration_string)		
+	

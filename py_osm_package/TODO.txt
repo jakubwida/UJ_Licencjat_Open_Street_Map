@@ -1,0 +1,6 @@
+//co ma byc:
+
+1: obiekt geometrii w Node, Way i Relation, tworzony przy parsowaniu
+2: filtrowanie - szczerze mowiac nie wiem jak mam to zrobic. mozemy sprobowac zrobic prosty skrypt do filtrowania albo cos
+3: klastrowanie - prosta biblioteczka klastrujaca przyjmujaca punkty w przestrzeni. moze byc osobno
+4: wyswietlanie - prosty wyswietlacz do punktow+ bardziej skomplikownay do przestrzeni. 
