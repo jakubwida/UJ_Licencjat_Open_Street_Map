@@ -39,10 +39,22 @@ class Relation:
 				outer_ways.append(i["object"].geom)
 			if i["role"]=="outer":
 				inner_ways.append(i["object"].geom)
+
 		inner_polygons =way_list_to_poly_list(inner_ways)
 		outer_polygons =way_list_to_poly_list(outer_ways)
 
-	
+		current_pol= inner_polygons[0]
+		for i in outer_polygons:
+			current_pol = current_pol.union(i)
+		outer_pol = current_pol
+		self.geom = outer_pol
+
+		if len(inner_polygons)>0:
+			current_pol= inner_polygons[0]
+			for i in inner_polygons:
+				current_pol = inner_polygons.union(i)
+			self.geom = outer_pol.difference(current_pol)		
+			
 
 	def way_list_to_poly_list(way_list):
 		poly_list =[]
@@ -64,6 +76,7 @@ class Relation:
 			res=(shapely.ops.linemerge(i))
 			res= LinearRing(res)
 			poly_list.append(Polygon(res))
+
 		return poly_list
 
 

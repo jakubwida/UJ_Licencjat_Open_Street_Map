@@ -30,7 +30,7 @@ class OSMApp:
 			elif tag =="relation":
 				self.relations[child.attrib["id"]]=Relation(child,self)
 
-		for i in list(self.ways.values()):
+		for i in list(self.relations.values()):
 			draw_sympy(i.geom,"r-")
 			#if "building" in i.tags:
 			#	draw_sympy(i.geom,"r-")

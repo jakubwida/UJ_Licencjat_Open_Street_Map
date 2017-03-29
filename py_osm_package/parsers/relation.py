@@ -26,6 +26,7 @@ class Relation:
 						i["object"]=self.osm_app.nodes[i["ref"]]
 					else:
 						self.complete=False
+		self.geom =None
 		if self.complete:
 			self.geom =None
 			if self.tags["type"]=="multipolygon":#this requires special treatment
