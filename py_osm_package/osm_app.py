@@ -34,6 +34,9 @@ class OSMApp:
 			draw_sympy(i.geom,"r-")
 			#if "building" in i.tags:
 			#	draw_sympy(i.geom,"r-")
+		#for i in list(self.ways.values()):
+		#	if "building" in i.tags:
+		#		draw_sympy(i.geom,"g-")
 		plt.show()
 
 """
