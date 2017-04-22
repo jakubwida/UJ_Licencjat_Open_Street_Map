@@ -17,8 +17,8 @@ for i in list(obj.ways.values()):
 		data.append(list(i.geom.centroid.coords)[0])
 
 
-from py_osm_package.cluster.scikit import scikit_k_means
-out_data=scikit_k_means(5,data)
+from py_osm_package.cluster.scikit import scikit_affinite_propagation
+out_data=scikit_affinite_propagation(data)
 draw_clusters(out_data)
 
 for i in list(obj.relations.values()):
