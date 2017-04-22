@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import math
 
 
-obj = Parser("map(3).osm")
+obj = Parser("map.osm")
 
 
 data = []
@@ -18,13 +18,8 @@ for i in list(obj.ways.values()):
 
 
 from py_osm_package.cluster.scikit import scikit_k_means
-labels=scikit_k_means(5,data)
-color_l=["ro","go","bo","ro","ro"]
-out_data=[]
-for i in range(len(labels)):
-	lis=list(zip(*[data[i]]))
-	plt.plot(lis[0],lis[1],color_l[labels[i]])
-
+out_data=scikit_k_means(5,data)
+draw_clusters(out_data)
 
 for i in list(obj.relations.values()):
 	draw_sympy(i.geom,"r-")

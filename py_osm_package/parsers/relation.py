@@ -7,9 +7,9 @@ from shapely.geometry import Point
 from shapely.geometry import Polygon
 import shapely.ops
 class Relation:
-	def __init__(self,osm_tree_child,osm_app):
+	def __init__(self,osm_tree_child,parser):
 		print("relation parsed")
-		self.osm_app =osm_app
+		self.parser =parser
 		self.id = osm_tree_child.attrib["id"] # id unique in relations
 		self.members =parse_members(osm_tree_child)
 		self.tags = parse_tags(osm_tree_child) # dictionary of tags, where k= key, v = value
@@ -17,13 +17,13 @@ class Relation:
 		for i in self.members:
 			if "type" in i:
 				if i["type"]=="way":
-					if i["ref"] in osm_app.ways:
-						i["object"]=self.osm_app.ways[i["ref"]]
+					if i["ref"] in parser.ways:
+						i["object"]=self.parser.ways[i["ref"]]
 					else:
 						self.complete=False
 				if i["type"]=="node":
-					if i["ref"] in osm_app.nodes:
-						i["object"]=self.osm_app.nodes[i["ref"]]
+					if i["ref"] in parser.nodes:
+						i["object"]=self.parser.nodes[i["ref"]]
 					else:
 						self.complete=False
 		self.geom =None
@@ -31,8 +31,8 @@ class Relation:
 			self.geom =None
 			if self.tags["type"]=="multipolygon" or self.tags["type"]=="boundary":#this requires special treatment
 				self.get_multiploygon()
-				
-	
+
+
 	def get_multiploygon(self):
 		outer_ways = []
 		inner_ways = []
@@ -56,8 +56,8 @@ class Relation:
 				current_pol= inner_polygons[0]
 				for i in inner_polygons:
 					current_pol = current_pol.union(i)
-				self.geom = outer_pol.difference(current_pol)		
-			
+				self.geom = outer_pol.difference(current_pol)
+
 
 	def way_list_to_poly_list(self,way_list):
 		poly_list =[]
@@ -75,16 +75,10 @@ class Relation:
 			else:
 				complete_complexes.append(current_list)
 				current_list=[]
-		
+
 		for i in complete_complexes:
 			res=(shapely.ops.linemerge(i))
 			res= LinearRing(res)
 			poly_list.append(Polygon(res))
 
 		return poly_list
-
-
-
-
-
-
