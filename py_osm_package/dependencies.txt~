@@ -1,2 +1,0 @@
-shapely $pip install shapely
-	depends on GEOS $sudo apt-get install libdev-geos

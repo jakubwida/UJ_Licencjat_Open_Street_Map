@@ -5,7 +5,8 @@ def draw_sympy(figure,decoration_string):
 		print(figure.geom_type)
 		if figure.geom_type=="Polygon":
 			draw_sympy(figure.exterior,decoration_string)
-			draw_sympy(figure.interiors,decoration_string)
+			for i in figure.interiors:
+				draw_sympy(i,decoration_string)
 		elif figure.geom_type=="MultiPolygon":
 			for i in figure:
 				draw_sympy(i,decoration_string)

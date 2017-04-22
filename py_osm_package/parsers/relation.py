@@ -70,7 +70,6 @@ class Relation:
 		current_list=[]
 		complete_complexes=[]
 		for i in complexes:
-			print(list(i.coords))
 			if list(i.coords)[-1] !=current_point:
 				current_list.append(i)
 			else:

@@ -1,5 +1,8 @@
 import xml.etree.ElementTree as etree
-from py_osm_package.data_format import *
+from py_osm_package.parsers.data_format import *
+
+
+#old, do not use 
 
 class OSMParser:
 	"""class created for parsing osm files with various options"""
@@ -44,12 +47,5 @@ class OSMParser:
 				for i in list_of_buildings:
 					if child.attrib["id"]==str(i):
 						out_data.add_point((child.attrib['lon'],child.attrib['lat'],1.0))
-				
+
 		return out_data
-
-
-
-
-
-
-
